@@ -34,9 +34,9 @@ vim.keymap.set("v", "<leader>sr", [[hy:%s/<C-r><C-w>//gc<left><left><left>]])
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+-- vim.keymap.set("n", "<leader><leader>", function()
+--     vim.cmd("so")
+-- end)
 vim.keymap.set("n", "<leader>w/", function()
     vim.cmd("vsplit")
 end)

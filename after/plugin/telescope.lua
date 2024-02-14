@@ -49,6 +49,9 @@ end
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set('v', '<leader>sp', function()
+  if telescope_last == 0 then
+    telescope_last = 1
+  end
 	local text = vim.getVisualSelection()
 	builtin.live_grep({ default_text = text })
 end, opts)	

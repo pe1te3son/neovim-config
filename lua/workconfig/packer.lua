@@ -11,8 +11,13 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	} 
 
+  -- use {
+  --     'uloco/bluloco.nvim',
+  --     requires = { 'rktjmp/lush.nvim' }
+  -- }
+
   use({
-	  'marko-cerovac/material.nvim',
+  	  'marko-cerovac/material.nvim',
     as = 'material-theme',
     config = function()
       vim.cmd('colorscheme material')
@@ -71,5 +76,7 @@ use {
   -- refer to the configuration section below
  },
 }
+
+use { "lewis6991/gitsigns.nvim" }
 
 end)
