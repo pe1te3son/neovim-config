@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
--- vim.keymap.set("n", "<leader>ar", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 vim.keymap.set("i", "jk", "<Esc>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -31,13 +31,23 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 --vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("v", "<leader>sr", [[hy:%s/<C-r><C-w>//gc<left><left><left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
-
-vim.keymap.set("n", "<leader><Tab>", function()
-    vim.cmd("bprevious")
+vim.keymap.set("n", "<leader>w/", function()
+    vim.cmd("vsplit")
 end)
+
+vim.keymap.set("n", "<leader>wl", "<C-w>l")
+vim.keymap.set("n", "<leader>wh", "<C-w>h")
+vim.keymap.set("n", "<leader>wj", "<C-w>j")
+vim.keymap.set("n", "<leader>wk", "<C-w>k")
+
+vim.keymap.set("n", "<leader><Tab>", "<C-^>")
+vim.keymap.set("n", "<leader>bd", function()
+    vim.cmd("bd")
+end)
+

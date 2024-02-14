@@ -10,7 +10,7 @@ require('material').setup({
     },
 
     styles = { -- Give comments style such as bold, italic, underline etc.
-        comments = { --[[ italic = true ]] },
+        comments = { italic = true },
         strings = { --[[ bold = true ]] },
         keywords = { --[[ underline = true ]] },
         functions = { --[[ bold = true, undercurl = true ]] },
@@ -45,7 +45,7 @@ require('material').setup({
         -- "rainbow-delimiters",
         -- "sneak",
          "telescope",
-        -- "trouble",
+        "trouble",
         -- "which-key",
         -- "nvim-notify",
     },
@@ -60,7 +60,7 @@ require('material').setup({
 
     high_visibility = {
         lighter = false, -- Enable higher contrast text for lighter style
-        darker = false -- Enable higher contrast text for darker style
+        darker = true -- Enable higher contrast text for darker style
     },
 
     lualine_style = "oceanic", -- Lualine style ( can be 'stealth' or 'default' )
