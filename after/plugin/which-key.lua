@@ -1,6 +1,6 @@
 local wk = require("which-key")
 
-wk.setup {
+wk.setup ({
   triggers_blacklist = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for keymaps that start with a native binding
@@ -10,7 +10,7 @@ wk.setup {
   -- your configuration comes here
   -- or leave it empty to use the default settings
   -- refer to the configuration section below
-}
+})
 
 wk.register({
   ["<leader>"] = {
@@ -54,6 +54,10 @@ wk.register({
         name = "Open git blame",
         l = { "Open git blame line" },
       },
+    },
+    t = {
+      name = "+Theme",
+      c = { "Change" },
     },
   },
 }, {
