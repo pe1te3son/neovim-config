@@ -9,8 +9,9 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     requires = { {'nvim-lua/plenary.nvim'} }
-  } 
+  }
 
+  -- use 'tanvirtin/monokai.nvim'
   use{
     'sainnhe/sonokai',
     as = 'sonokai',

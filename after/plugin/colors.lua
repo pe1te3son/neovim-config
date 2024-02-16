@@ -67,6 +67,7 @@
 --     vim.cmd(':lua require("material.functions").find_style()')
 -- end)
 
+-- require('monokai').setup { italics = false }
 function ColorMyPencils(color) 
 	color = color or "sonokai"
   vim.g.sonokai_style = "maia"

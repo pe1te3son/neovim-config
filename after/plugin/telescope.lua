@@ -24,7 +24,7 @@ vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 
 local telescope_last = 0
 
-function telescope_resume()
+local function telescope_resume()
   if telescope_last == 0 then
     telescope_last = 1
     builtin.live_grep()
@@ -54,4 +54,4 @@ vim.keymap.set('v', '<leader>sp', function()
   end
 	local text = vim.getVisualSelection()
 	builtin.live_grep({ default_text = text })
-end, opts)	
+end, opts)
