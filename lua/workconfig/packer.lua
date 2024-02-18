@@ -11,27 +11,13 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- use 'tanvirtin/monokai.nvim'
   use{
     'sainnhe/sonokai',
     as = 'sonokai',
-    config = function()
-      -- vim.cmd('let g:sonokai_enable_italic = 1')
-      vim.cmd('colorscheme sonokai')
-    end
   }
-
-  -- use({
-  -- 	  'marko-cerovac/material.nvim',
-  --   as = 'material-theme',
-  --   config = function()
-  --     vim.cmd('colorscheme material')
-  --   end
-  -- })	
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use("nvim-treesitter/nvim-treesitter-context");
-  -- use("nvim-treesitter/playground") 
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
   use {
@@ -59,9 +45,7 @@ return require('packer').startup(function(use)
 
   use { "kelly-lin/ranger.nvim" }
 
-  use({
-    "kylechui/nvim-surround",
-  })
+  use { "tpope/vim-surround" }
 
   use { "terrortylor/nvim-comment" }
   use("github/copilot.vim")
@@ -79,5 +63,7 @@ return require('packer').startup(function(use)
       vim.o.timeoutlen = 300
     end
   }
+
+  use { "windwp/nvim-autopairs" }
 
 end)

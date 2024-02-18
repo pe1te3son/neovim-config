@@ -14,6 +14,8 @@ wk.setup ({
 
 wk.register({
   ["<leader>"] = {
+    d = { "Delete+ to system clipboard" },
+    ["<C-w>"] = { "Split window horizontally" },
     ["w/"] = { "Split window vertically" },
     wl = { "Move to the window on the right" },
     wh = { "Move to the window on the left" },
@@ -21,7 +23,8 @@ wk.register({
     wk = { "Move to the window above" },
     ["<Tab>"] = { "Switch to the last buffer" },
     u = { "Toggle undotree" },
-    y = { "Yank to system clipboard" },
+    y = { "Yank+ to system clipboard" },
+    Y = { "Yank line to system clipboard" },
     vh = { "Open help" },
     f = {
       name = "+Find",
@@ -47,13 +50,11 @@ wk.register({
       l = { "Open error list" },
       x = { "Open explorer" },
     },
-    g = {
+    gi = {
       name = "+Git",
-      s = { "Open git status" },
-      b = { 
-        name = "Open git blame",
-        l = { "Open git blame line" },
-      },
+      s = { "Status" },
+      b = { "Blame" },
+      d = { "Diff" },
     },
     t = {
       name = "+Theme",

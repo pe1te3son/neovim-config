@@ -28,13 +28,13 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.set_preferences({
-    suggest_lsp_servers = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+  suggest_lsp_servers = true,
+  sign_icons = {
+    error = 'E',
+    warn = 'W',
+    hint = 'H',
+    info = 'I'
+  }
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -52,8 +52,19 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+    servers = {
+    -- ['tsserver'] = {'javascript', 'typescript'},
+    ['rust_analyzer'] = {'rust'},
+  }
+})
+
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+  virtual_text = true
 })
