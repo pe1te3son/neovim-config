@@ -29,3 +29,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.o.foldmethod = 'indent'
+vim.o.foldlevel = 2
+vim.o.foldlevelstart = 99
+vim.o.foldnestmax = 2

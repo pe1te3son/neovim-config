@@ -12,7 +12,7 @@ lsp.nvim_workspace()
 
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
@@ -38,7 +38,7 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
+  local opts = { buffer = bufnr, remap = false }
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -57,9 +57,10 @@ lsp.format_on_save({
     async = false,
     timeout_ms = 10000,
   },
-    servers = {
+  servers = {
     -- ['tsserver'] = {'javascript', 'typescript'},
-    ['rust_analyzer'] = {'rust'},
+    ['rust_analyzer'] = { 'rust' },
+    ['lua_ls'] = { 'lua' },
   }
 })
 

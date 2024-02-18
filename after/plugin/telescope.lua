@@ -35,16 +35,16 @@ end
 vim.keymap.set("n", "<leader>sl", telescope_resume)
 
 function vim.getVisualSelection()
-	vim.cmd('noau normal! "vy"')
-	local text = vim.fn.getreg('v')
-	vim.fn.setreg('v', {})
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg('v')
+  vim.fn.setreg('v', {})
 
-	text = string.gsub(text, "\n", "")
-	if #text > 0 then
-		return text
-	else
-		return ''
-	end
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
 end
 
 local opts = { noremap = true, silent = true }
@@ -52,6 +52,6 @@ vim.keymap.set('v', '<leader>sp', function()
   if telescope_last == 0 then
     telescope_last = 1
   end
-	local text = vim.getVisualSelection()
-	builtin.live_grep({ default_text = text })
+  local text = vim.getVisualSelection()
+  builtin.live_grep({ default_text = text })
 end, opts)
