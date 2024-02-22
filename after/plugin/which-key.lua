@@ -26,6 +26,12 @@ wk.register({
     y = { "Yank+ to system clipboard" },
     Y = { "Yank line to system clipboard" },
     vh = { "Open help" },
+    vd = { "Open diagnostics" },
+    vr = {
+      a = { "Lsp code action" },
+      r = { "Lsp reference" },
+      n = { "Lsp rename" },
+    },
     f = {
       name = "+Find",
       f = { "Find file" },
