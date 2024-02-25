@@ -1,5 +1,8 @@
+require 'colorizer'.setup()
+
 function ColorMyPencils(color)
   color = color or "sonokai"
+
   vim.g.sonokai_style = "maia"
   vim.g.sonokai_enable_italic = 1
   vim.cmd.colorscheme(color)
