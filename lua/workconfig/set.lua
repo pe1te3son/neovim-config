@@ -20,7 +20,12 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = false
+if (os.getenv('TERMGUICOLORS') == 'false') then
+  vim.opt.termguicolors = false
+else
+  vim.opt.termguicolors = true
+end
+
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
