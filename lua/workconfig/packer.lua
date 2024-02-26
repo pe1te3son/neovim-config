@@ -66,5 +66,5 @@ return require('packer').startup(function(use)
 
   use { "windwp/nvim-autopairs" }
   use { 'nvim-lualine/lualine.nvim' }
-  use 'norcalli/nvim-colorizer.lua'
+  use { 'norcalli/nvim-colorizer.lua' }
 end)

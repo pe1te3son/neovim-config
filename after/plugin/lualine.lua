@@ -35,7 +35,7 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_b = { 'branch', 'diagnostics' },
     lualine_c = {
 
       {
@@ -56,8 +56,8 @@ require('lualine').setup({
           unnamed = '[No Name]', -- Text to show for unnamed buffers.
           newfile = '[New]',     -- Text to show for newly created file before first write
         }
-      }
-
+      },
+      'diff'
     }
   }
 })
