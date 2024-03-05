@@ -12,12 +12,15 @@ lsp.nvim_workspace()
 
 
 local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+  ['<C-Space>'] = cmp.mapping.complete(),
+  ['<C-n>'] = cmp_action.luasnip_jump_forward(),
+  ['<C-p>'] = cmp_action.luasnip_jump_backward(),
 })
 
 cmp_mappings['<Tab>'] = nil
