@@ -67,4 +67,12 @@ return require('packer').startup(function(use)
   use { "windwp/nvim-autopairs" }
   use { 'nvim-lualine/lualine.nvim' }
   use { 'norcalli/nvim-colorizer.lua' }
+  use {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "github/copilot.lua" },    -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    }
+  }
 end)

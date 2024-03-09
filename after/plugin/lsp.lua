@@ -10,7 +10,6 @@ lsp.ensure_installed({
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -22,6 +21,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-n>'] = cmp_action.luasnip_jump_forward(),
   ['<C-p>'] = cmp_action.luasnip_jump_backward(),
 })
+
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
