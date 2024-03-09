@@ -29,6 +29,8 @@ vim.keymap.set('n', '<leader>ps', function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader><leader>', builtin.commands, {})
+
 
 local function telescope_resume()
   if telescope_last == 0 then

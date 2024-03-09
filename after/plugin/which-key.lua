@@ -66,8 +66,26 @@ wk.register({
       name = "+Theme",
       c = { "Change" },
     },
+    c = {
+      name = "+Copilot",
+      p = { "Chat - Buffer" },
+    },
   },
 }, {
   mode = "n",
+  prefix = "",
+})
+
+wk.register({
+  ["<leader>"] = {
+    c = {
+      name = "+Copilot/Quickfix",
+      p = { "Chat - Selection" },
+      e = { "Explain - Selection" },
+      r = { "quickfix - replace" },
+    },
+  },
+}, {
+  mode = "v",
   prefix = "",
 })

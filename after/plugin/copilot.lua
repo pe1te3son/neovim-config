@@ -4,7 +4,7 @@ co_chat.setup {
 }
 
 vim.keymap.set("n", "<leader>cp", function()
-    local input = vim.fn.input("Copilot Chat: ")
+    local input = vim.fn.input("Copilot Chat - Buffer: ")
     if input ~= "" then
       co_chat.ask(input, { selection = require("CopilotChat.select").buffer })
     end
@@ -12,7 +12,7 @@ vim.keymap.set("n", "<leader>cp", function()
   { noremap = true })
 
 vim.keymap.set("v", "<leader>cp", function()
-    local input = vim.fn.input("Chat about selection: ")
+    local input = vim.fn.input("Copilot Chat - Selection: ")
     if input ~= "" then
       co_chat.ask(input, { selection = require("CopilotChat.select").selection })
     end
