@@ -1,7 +1,9 @@
 local co_chat = require("CopilotChat")
 co_chat.setup {
-  debug = true
+  debug = false
 }
+
+vim.g.copilot_filetypes = { rust = false }
 
 vim.keymap.set("n", "<leader>cp", function()
     local input = vim.fn.input("Copilot Chat - Buffer: ")

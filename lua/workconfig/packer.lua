@@ -17,7 +17,11 @@ return require('packer').startup(function(use)
   }
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-  use("nvim-treesitter/nvim-treesitter-context");
+  -- use("nvim-treesitter/nvim-treesitter-context");
+  use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+  }
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
   use {
@@ -70,8 +74,8 @@ return require('packer').startup(function(use)
   use {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
-    dependencies = {
-      { "github/copilot.lua" },    -- or github/copilot.vim
+    requires = {
+      { "github/copilot.vim" },    -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     }
   }

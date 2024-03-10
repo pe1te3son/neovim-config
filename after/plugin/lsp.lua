@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local navic = require("nvim-navic")
 
 lsp.preset("recommended")
 
@@ -42,6 +43,9 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
