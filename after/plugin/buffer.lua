@@ -18,12 +18,22 @@ local function switch_to_last_buffer()
   end
 end
 
-function delete_buffer_by_id(buffer_id)
+local function delete_buffer_by_id(buffer_id)
   vim.api.nvim_command('bdelete ' .. buffer_id)
+end
+
+local function is_modified(buffr)
+  return vim.api.nvim_buf_get_option(buffr, 'modified')
 end
 
 vim.keymap.set("n", "<leader>bd", function()
   local current_buffer = vim.api.nvim_get_current_buf()
+
+  if is_modified(current_buffer) then
+    print("Buffer has unsaved changes.")
+    return
+  end
+
   switch_to_last_buffer()
   delete_buffer_by_id(current_buffer)
 end)
