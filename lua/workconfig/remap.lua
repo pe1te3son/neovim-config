@@ -55,7 +55,5 @@ vim.keymap.set("n", "<leader>wK", "<C-w>K")
 
 vim.keymap.set("n", "<leader>wd", "<C-w>q")
 
-vim.keymap.set("n", "<leader><Tab>", "<C-^>")
-vim.keymap.set("n", "<leader>bd", function()
-  vim.cmd("bd")
-end)
+-- switches to the previous buffer even if deleted
+-- vim.keymap.set("n", "<leader><Tab>", "<C-^>")
