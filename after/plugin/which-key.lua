@@ -26,8 +26,9 @@ wk.register({
     y = { "Yank+ to system clipboard" },
     Y = { "Yank line to system clipboard" },
     vh = { "Open help" },
-    vd = { "Open diagnostics" },
-    vr = {
+    vd = { "Open Float diagnostics" },
+    vc = {
+      name = "+Lsp",
       a = { "Lsp code action" },
       r = { "Lsp reference" },
       n = { "Lsp rename" },
@@ -61,10 +62,6 @@ wk.register({
       s = { "Status" },
       b = { "Blame" },
       d = { "Diff" },
-    },
-    t = {
-      name = "+Theme",
-      c = { "Change" },
     },
     c = {
       name = "+Copilot",
