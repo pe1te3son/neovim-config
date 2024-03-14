@@ -1,3 +1,19 @@
+local current_git_dir = ''
+local function get_git_folder()
+  if current_git_dir ~= '' then
+    return current_git_dir
+  end
+
+  local dir = vim.fn.system('basename $(git rev-parse --show-toplevel)'):sub(1, -2)
+
+  -- not in git repo
+  if dir:sub(1, 5) == "fatal" then
+    return current_git_dir
+  end
+  current_git_dir = 'G: ' .. dir
+  return current_git_dir
+end
+
 require('lualine').setup({
   options = {
     theme = 'auto', -- lualine theme
@@ -24,9 +40,9 @@ require('lualine').setup({
     -- This feature is only available in neovim 0.7 and higher.
 
     refresh = {          -- sets how often lualine should refresh it's contents (in ms)
-      statusline = 1000, -- The refresh option sets minimum time that lualine tries
-      tabline = 1000,    -- to maintain between refresh. It's not guarantied if situation
-      winbar = 1000      -- arises that lualine needs to refresh itself before this time
+      statusline = 2000, -- The refresh option sets minimum time that lualine tries
+      tabline = 10000,   -- to maintain between refresh. It's not guarantied if situation
+      winbar = 10000     -- arises that lualine needs to refresh itself before this time
       -- it'll do it.
 
       -- Also you can force lualine's refresh by calling refresh function
@@ -38,7 +54,7 @@ require('lualine').setup({
     lualine_b = {
       'branch',
       'diagnostics',
-      "vim.fn.system('basename $(git rev-parse --show-toplevel)'):sub(1, -2)"
+      get_git_folder
     },
     lualine_c = {
 
