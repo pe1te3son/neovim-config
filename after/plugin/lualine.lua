@@ -35,7 +35,11 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diagnostics' },
+    lualine_b = {
+      'branch',
+      'diagnostics',
+      "vim.fn.system('basename $(git rev-parse --show-toplevel)'):sub(1, -2)"
+    },
     lualine_c = {
 
       {

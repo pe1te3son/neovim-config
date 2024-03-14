@@ -40,5 +40,4 @@ vim.o.foldlevel = 2
 vim.o.foldlevelstart = 99
 vim.o.foldnestmax = 2
 
--- vim.o.winbar = "%{%v:lua.vim.fn.expand('%F')%}  %{%v:lua.require'nvim-navic'.get_location()%}"
-vim.o.winbar = "%{%v:lua.vim.fn.expand('%:t')%} > %{%v:lua.require'nvim-navic'.get_location()%}"
+vim.o.winbar = "%{%v:lua.vim.fn.expand('%:t')%} | %{%v:lua.require'nvim-navic'.get_location()%}"
