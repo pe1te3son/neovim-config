@@ -79,4 +79,8 @@ return require('packer').startup(function(use)
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     }
   }
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+  }
 end)

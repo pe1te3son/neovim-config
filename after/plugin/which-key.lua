@@ -38,8 +38,11 @@ wk.register({
       f = { "Find file" },
     },
     a = {
-      name = "+Ranger",
+      name = "+Ranger/Hop",
       r = { "Open ranger" },
+      j = { "Hop word after cursor" },
+      k = { "Hop word before cursor" },
+      l = { "Hop line" },
     },
     s = {
       p = { "Search in Project" },

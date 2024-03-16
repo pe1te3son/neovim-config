@@ -23,7 +23,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp_action.luasnip_jump_backward(),
 })
 
-
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
@@ -56,7 +55,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>vcr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vcn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp.format_on_save({
