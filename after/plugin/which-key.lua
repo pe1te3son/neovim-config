@@ -14,16 +14,19 @@ wk.setup({
 
 wk.register({
   ["<leader>"] = {
+    ["<space>"] = { "Open commands" },
     j = { "Hop char after cursor" },
     k = { "Hop char before cursor" },
     i = { "Hop char any case anywhere" },
     d = { "Delete+ to system clipboard" },
-    ["<C-w>"] = { "Split window horizontally" },
-    ["w/"] = { "Split window vertically" },
-    wl = { "Move to the window on the right" },
-    wh = { "Move to the window on the left" },
-    wj = { "Move to the window below" },
-    wk = { "Move to the window above" },
+    w = {
+      name = "+Window",
+      ["/"] = { "Split window vertically" },
+      l = { "Move to the window on the right" },
+      h = { "Move to the window on the left" },
+      j = { "Move to the window below" },
+      k = { "Move to the window above" },
+    },
     ["<Tab>"] = { "Switch to the last buffer" },
     u = { "Toggle undotree" },
     y = { "Yank+ to system clipboard" },

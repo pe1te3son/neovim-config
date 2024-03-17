@@ -14,7 +14,7 @@ vim.keymap.set('n', '<leader>i', function()
   })
 end, { remap = true })
 
-vim.keymap.set('n', '<leader>j', function()
+vim.keymap.set({ 'n', 'v' }, '<leader>j', function()
   hop.hint_char1({
     keys = 'hjklfdganvie',
     direction = directions.AFTER_CURSOR,
@@ -22,7 +22,7 @@ vim.keymap.set('n', '<leader>j', function()
   })
 end, { remap = true })
 
-vim.keymap.set('n', '<leader>k', function()
+vim.keymap.set({ 'n', 'v' }, '<leader>k', function()
   hop.hint_char1({
     keys = 'hjklfdganvie',
     direction = directions.BEFORE_CURSOR,
@@ -30,7 +30,7 @@ vim.keymap.set('n', '<leader>k', function()
   })
 end, { remap = true })
 
-vim.keymap.set('n', '<leader>al', function()
+vim.keymap.set({ 'n', 'v' }, '<leader>al', function()
   hop.hint_lines({
     current_line_only = false,
     multi_windows = true
