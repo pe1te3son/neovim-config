@@ -14,18 +14,19 @@ vim.keymap.set('n', '<leader>i', function()
   })
 end, { remap = true })
 
-vim.keymap.set('n', '<leader>aj', function()
-  hop.hint_words({
+vim.keymap.set('n', '<leader>j', function()
+  hop.hint_char1({
+    keys = 'hjklfdganvie',
     direction = directions.AFTER_CURSOR,
     current_line_only = false,
   })
 end, { remap = true })
 
-vim.keymap.set('n', '<leader>ak', function()
-  hop.hint_words({
+vim.keymap.set('n', '<leader>k', function()
+  hop.hint_char1({
+    keys = 'hjklfdganvie',
     direction = directions.BEFORE_CURSOR,
     current_line_only = false,
-    multi_windows = false
   })
 end, { remap = true })
 

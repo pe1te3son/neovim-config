@@ -14,6 +14,9 @@ wk.setup({
 
 wk.register({
   ["<leader>"] = {
+    j = { "Hop char after cursor" },
+    k = { "Hop char before cursor" },
+    i = { "Hop char any case anywhere" },
     d = { "Delete+ to system clipboard" },
     ["<C-w>"] = { "Split window horizontally" },
     ["w/"] = { "Split window vertically" },
@@ -40,8 +43,6 @@ wk.register({
     a = {
       name = "+Ranger/Hop",
       r = { "Open ranger" },
-      j = { "Hop word after cursor" },
-      k = { "Hop word before cursor" },
       l = { "Hop line" },
     },
     s = {
