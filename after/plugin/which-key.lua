@@ -22,6 +22,7 @@ wk.register({
     w = {
       name = "+Window",
       ["/"] = { "Split window vertically" },
+      ["?"] = { "Split window horizontaly" },
       l = { "Move to the window on the right" },
       h = { "Move to the window on the left" },
       j = { "Move to the window below" },

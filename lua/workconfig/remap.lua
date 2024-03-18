@@ -35,13 +35,8 @@ vim.keymap.set("v", "<leader>sr", [[hy:%s/<C-r><C-w>//gc<left><left><left>]])
 vim.keymap.set("v", "<leader>cr", [[hy:cdo %s/<C-r><C-w>//gic<left><left><left><left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-
--- vim.keymap.set("n", "<leader><leader>", function()
---     vim.cmd("so")
--- end)
-vim.keymap.set("n", "<leader>w/", function()
-  vim.cmd("vsplit")
-end)
+vim.keymap.set("n", "<leader>w/", '<C-w>v <C-w>l', { noremap = true })
+vim.keymap.set("n", "<leader>w?", '<C-w>s <C-w>j', { noremap = true })
 
 vim.keymap.set("n", "<leader>wl", "<C-w>l")
 vim.keymap.set("n", "<leader>wh", "<C-w>h")
@@ -54,6 +49,3 @@ vim.keymap.set("n", "<leader>wJ", "<C-w>J")
 vim.keymap.set("n", "<leader>wK", "<C-w>K")
 
 vim.keymap.set("n", "<leader>wd", "<C-w>q")
-
--- switches to the previous buffer even if deleted
--- vim.keymap.set("n", "<leader><Tab>", "<C-^>")
