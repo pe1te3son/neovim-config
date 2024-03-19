@@ -32,13 +32,15 @@ wk.register({
     u = { "Toggle undotree" },
     y = { "Yank+ to system clipboard" },
     Y = { "Yank line to system clipboard" },
-    vh = { "Open help" },
-    vd = { "Open Float diagnostics" },
-    vc = {
+    v = {
       name = "+Lsp",
+      h = { "Open help" },
       a = { "Lsp code action" },
       r = { "Lsp reference" },
       n = { "Lsp rename" },
+      s = { "Lsp workspace symbol" },
+      f = { "Lsp format" },
+      d = { "Open Float diagnostics" },
     },
     f = {
       name = "+Find",
@@ -65,6 +67,7 @@ wk.register({
       l = { "Open error list" },
       x = { "Open explorer" },
     },
+    gd = { "Go to definition" },
     gi = {
       name = "+Git",
       s = { "Status" },
