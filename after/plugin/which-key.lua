@@ -67,7 +67,6 @@ wk.register({
       l = { "Open error list" },
       x = { "Open explorer" },
     },
-    gd = { "Go to definition" },
     gi = {
       name = "+Git",
       s = { "Status" },
