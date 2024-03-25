@@ -16,12 +16,41 @@ co_chat.setup {
   },
   -- default mappings
   mappings = {
-    close = 'q',
-    reset = '<C-S-l>',
-    complete = '<C-space>',
-    submit_prompt = '<CR>',
-    accept_diff = '<C-y>',
-    show_diff = '<C-d>',
+    -- close = 'q',
+    -- reset = '<C-S-l>',
+    -- complete = '<C-space>',
+    -- submit_prompt = '<CR>',
+    -- accept_diff = '<C-y>',
+    -- show_diff = '<C-d>',
+    complete = {
+      detail = 'Use @<Tab> or /<Tab> for options.',
+      insert = '<C-space>',
+    },
+    close = {
+      normal = 'q',
+      insert = '<C-c>'
+    },
+    reset = {
+      normal = '<C-S-l>',
+      insert = '<C-l>'
+    },
+    submit_prompt = {
+      normal = '<CR>',
+      insert = '<C-m>'
+    },
+    accept_diff = {
+      normal = '<C-y>',
+      insert = '<C-y>'
+    },
+    show_diff = {
+      normal = 'gd'
+    },
+    show_system_prompt = {
+      normal = 'gp'
+    },
+    show_user_selection = {
+      normal = 'gs'
+    },
   },
 }
 
