@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
     'sainnhe/sonokai',
     as = 'sonokai',
   }
+  use { 'ribru17/bamboo.nvim' }
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   -- use("nvim-treesitter/nvim-treesitter-context");
