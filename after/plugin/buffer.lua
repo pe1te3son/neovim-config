@@ -20,6 +20,11 @@ end
 local function switch_to_last_buffer()
   local prev_bufnr = vim.api.nvim_eval('bufnr("#")')
 
+  -- if there is no previous buffer then nothing to do
+  if prev_bufnr == -1 then
+    return
+  end
+
   if vim.api.nvim_buf_get_option(prev_bufnr, 'buflisted') then
     return vim.api.nvim_set_current_buf(prev_bufnr)
   end
