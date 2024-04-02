@@ -10,12 +10,14 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
+  use { 'nvim-telescope/telescope-ui-select.nvim' }
 
   use {
     'sainnhe/sonokai',
     as = 'sonokai',
   }
 
+  use { "rebelot/kanagawa.nvim" }
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   -- use("nvim-treesitter/nvim-treesitter-context");
   use {
@@ -83,4 +85,5 @@ return require('packer').startup(function(use)
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
   }
+  use { "nvim-tree/nvim-web-devicons" }
 end)

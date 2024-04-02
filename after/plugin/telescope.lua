@@ -13,6 +13,8 @@ telescope.setup({
   },
 })
 
+require("telescope").load_extension("ui-select")
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', function()
   if telescope_last == 0 then

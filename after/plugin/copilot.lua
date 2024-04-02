@@ -70,13 +70,13 @@ vim.keymap.set("n", "<leader>cp", function()
 vim.keymap.set("v", "<leader>cp", function()
     local input = vim.fn.input("Copilot Chat - Selection: ")
     if input ~= "" then
-      co_chat.ask(input, { selection = require("CopilotChat.select").selection })
+      co_chat.ask(input, { selection = require("CopilotChat.select").visual })
     end
   end,
   { noremap = true })
 
 
 vim.keymap.set("v", "<leader>ce", function()
-    co_chat.ask("Explain how it works", { selection = require("CopilotChat.select").selection })
+    co_chat.ask("Explain how it works", { selection = require("CopilotChat.select").visual })
   end,
   { noremap = true })
