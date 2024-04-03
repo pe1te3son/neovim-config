@@ -28,35 +28,34 @@ return require('packer').startup(function(use)
   use("tpope/vim-fugitive")
   use {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
-
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
-    }
+    branch = 'v3.x',
   }
 
+  use { 'neovim/nvim-lspconfig' }
+  use { 'williamboman/mason.nvim' }
+  use { 'williamboman/mason-lspconfig.nvim' }
+
+  -- Autocompletion
+  use { 'hrsh7th/nvim-cmp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'saadparwaiz1/cmp_luasnip' }
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-nvim-lua' }
+  use { 'onsails/lspkind.nvim' }
+
+  -- Snippets
+  use { 'L3MON4D3/LuaSnip',
+    dependencies = { 'rafamadriz/friendly-snippets' }
+  }
+  use { 'rafamadriz/friendly-snippets' }
+
   use { "kelly-lin/ranger.nvim" }
-
   use { "tpope/vim-surround" }
-
   use { "terrortylor/nvim-comment" }
-  use("github/copilot.vim")
-  use("nvim-lua/plenary.nvim")
-  use("nvim-pack/nvim-spectre")
+  use { "github/copilot.vim" }
+  use { "nvim-lua/plenary.nvim" }
+  use { "nvim-pack/nvim-spectre" }
 
   use { "folke/trouble.nvim" }
 
