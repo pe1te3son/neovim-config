@@ -78,6 +78,7 @@ require('lualine').setup({
         }
       },
       'diff'
-    }
+    },
+    lualine_x = { 'filetype' },
   }
 })
