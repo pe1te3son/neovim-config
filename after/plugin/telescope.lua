@@ -7,6 +7,7 @@ telescope.setup({
     mappings = {
       n = {
         ['q'] = actions.close,
+        ['<C-c>'] = actions.close,
       },
       i = {
         ["<C-j>"] = actions.move_selection_next,
