@@ -81,7 +81,12 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>va", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
+  -- vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vr", function()
+    require('telescope.builtin').lsp_references({
+      initial_mode = 'normal',
+    })
+  end, opts)
   vim.keymap.set("n", "<leader>vn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, opts)
   -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
