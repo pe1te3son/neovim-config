@@ -24,6 +24,7 @@ cmp.setup({
       mode = 'symbol',       -- show only symbol annotations
       maxwidth = 30,         -- prevent the popup from showing more than provided characters
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+      show_labelDetails = true
     })
   },
   preselect = 'item',
@@ -38,7 +39,9 @@ cmp.setup({
   },
   window = {
     -- completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered({
+      border = 'single',
+    }),
   },
   mapping = cmp.mapping.preset.insert({
     ['<Tab>'] = nil,
@@ -51,6 +54,14 @@ cmp.setup({
     ['<C-p>'] = cmp_action.luasnip_jump_backward(),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+
+    ['<C-g>'] = function()
+      if cmp.visible_docs() then
+        cmp.close_docs()
+      else
+        cmp.open_docs()
+      end
+    end
   }),
   snippet = {
     expand = function(args)
