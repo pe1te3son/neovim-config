@@ -1,37 +1,76 @@
-local lsp = require("lsp-zero")
 local navic = require("nvim-navic")
+local lsp = require("lsp-zero")
+require("luasnip.loaders.from_vscode").lazy_load()
 
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-  'tsserver',
-  'rust_analyzer',
+require('mason').setup()
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'tsserver',
+    'rust_analyzer',
+  },
+  handlers = {
+    lsp.default_setup,
+  },
 })
-
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-  -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  -- ['<C-Space>'] = cmp.mapping.complete(),
-  ['<C-n>'] = cmp_action.luasnip_jump_forward(),
-  ['<C-p>'] = cmp_action.luasnip_jump_backward(),
+
+cmp.setup({
+  formatting = {
+    fields = { 'abbr', 'kind', 'menu' },
+    format = require('lspkind').cmp_format({
+      mode = 'symbol',       -- show only symbol annotations
+      maxwidth = 30,         -- prevent the popup from showing more than provided characters
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+      show_labelDetails = true
+    })
+  },
+  preselect = 'item',
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'buffer' },
+    { name = 'path' },
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered({
+      border = 'single',
+    }),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = nil,
+    ['<S-Tab>'] = nil,
+    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-n>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-p>'] = cmp_action.luasnip_jump_backward(),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+
+    ['<C-g>'] = function()
+      if cmp.visible_docs() then
+        cmp.close_docs()
+      else
+        cmp.open_docs()
+      end
+    end
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 })
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
-
-lsp.set_preferences({
-  suggest_lsp_servers = true,
+lsp.set_sign_icons({
   sign_icons = {
     error = 'E',
     warn = 'W',
@@ -53,7 +92,12 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set("n", "<leader>va", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
+  -- vim.keymap.set("n", "<leader>vr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vr", function()
+    require('telescope.builtin').lsp_references({
+      initial_mode = 'normal',
+    })
+  end, opts)
   vim.keymap.set("n", "<leader>vn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, opts)
   -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
@@ -71,8 +115,21 @@ lsp.format_on_save({
   }
 })
 
-lsp.setup()
-
 vim.diagnostic.config({
   virtual_text = true
 })
+
+require('lspconfig').lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {
+          'vim',
+          'require'
+        },
+      },
+    },
+  },
+}
+lsp.setup()

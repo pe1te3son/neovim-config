@@ -5,12 +5,30 @@ local telescope_last = 0
 telescope.setup({
   defaults = {
     mappings = {
+      n = {
+        ['q'] = actions.close,
+        ['<C-c>'] = actions.close,
+      },
       i = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
       },
     },
   },
+  pickers = {
+    buffers = {
+      initial_mode = 'normal',
+      mappings = {
+        n = {
+          ["d"] = actions.delete_buffer,
+        },
+      },
+    },
+    --     find_files = {
+    -- 	-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+    -- 	find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+    -- },
+  }
 })
 
 require("telescope").load_extension("ui-select")
@@ -23,7 +41,7 @@ vim.keymap.set('n', '<leader>ff', function()
   builtin.find_files()
 end, {})
 
-vim.keymap.set('n', '<leader>bb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>bo', builtin.buffers, {})
 -- vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>sp', builtin.live_grep, {})
 

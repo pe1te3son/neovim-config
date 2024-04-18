@@ -10,7 +10,7 @@ local function get_git_folder()
   if dir:sub(1, 5) == "fatal" then
     return current_git_dir
   end
-  current_git_dir = 'git:' .. dir
+  current_git_dir = " " .. dir
   return current_git_dir
 end
 
@@ -78,6 +78,7 @@ require('lualine').setup({
         }
       },
       'diff'
-    }
+    },
+    lualine_x = { 'filetype' },
   }
 })
