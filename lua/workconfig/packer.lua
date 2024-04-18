@@ -50,6 +50,8 @@ return require('packer').startup(function(use)
   }
   use { 'rafamadriz/friendly-snippets' }
 
+  use { "j-hui/fidget.nvim" }
+
   use { "kelly-lin/ranger.nvim" }
   use { "tpope/vim-surround" }
   use { "terrortylor/nvim-comment" }
