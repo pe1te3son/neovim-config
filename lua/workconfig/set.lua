@@ -41,3 +41,8 @@ vim.o.foldlevelstart = 99
 vim.o.foldnestmax = 2
 
 vim.o.winbar = "%{%v:lua.vim.fn.expand('%:t')%} | %{%v:lua.require'nvim-navic'.get_location()%}"
+
+vim.keymap.set("n", "+", [[<cmd>vertical resize +10<cr>]]) -- make the window biger vertically
+vim.keymap.set("n", "_", [[<cmd>vertical resize -10<cr>]]) -- make the window smaller vertically
+-- vim.keymap.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
+-- vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -

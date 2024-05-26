@@ -1,6 +1,11 @@
 local wk = require("which-key")
 
 wk.setup({
+  icons = {
+    breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+    separator = "-",  -- symbol used between a key and it's label
+    group = "+",      -- symbol prepended to a group
+  },
   triggers_blacklist = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for keymaps that start with a native binding
@@ -18,7 +23,16 @@ wk.register({
     j = { "Hop char after cursor" },
     k = { "Hop char before cursor" },
     i = { "Hop char any case anywhere" },
-    d = { "Delete+ to system clipboard" },
+    d = {
+      name = "+Dap"
+    },
+    r = {
+      name = "+Rust",
+      m = { "Expand macro" },
+      e = { "Explain error" },
+      o = { "Open docs" },
+      i = { "Render diagnostics" },
+    },
     w = {
       name = "+Window",
       ["/"] = { "Split window vertically" },

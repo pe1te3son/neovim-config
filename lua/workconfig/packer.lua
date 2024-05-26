@@ -87,4 +87,11 @@ return require('packer').startup(function(use)
     branch = 'v2', -- optional but strongly recommended
   }
   use { "nvim-tree/nvim-web-devicons" }
+  use {
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+  }
+  use 'mfussenegger/nvim-dap'
+  use 'nvim-neotest/nvim-nio'
+  use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
 end)

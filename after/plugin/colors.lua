@@ -4,13 +4,13 @@ end
 
 function ColorMyPencils(color)
   color = color or "kanagawa"
-  vim.g.sonokai_style = "maia"
-  vim.g.sonokai_enable_italic = 1
+  -- vim.g.sonokai_style = "maia"
+  -- vim.g.sonokai_enable_italic = 1
 
   vim.cmd.colorscheme(color)
-  -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-  -- vim.cmd("set background=dark")
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  vim.cmd("set background=dark")
 end
 
 require('kanagawa').setup({
@@ -22,7 +22,7 @@ require('kanagawa').setup({
   statementStyle = { bold = true },
   typeStyle = {},
   transparent = false,   -- do not set background color
-  dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
+  dimInactive = true,    -- dim inactive window `:h hl-NormalNC`
   terminalColors = true, -- define vim.g.terminal_color_{0,17}
   colors = {             -- add/modify theme and palette colors
     palette = {},

@@ -9,8 +9,16 @@ require('mason-lspconfig').setup({
     'rust_analyzer',
   },
   handlers = {
-    lsp.default_setup,
-  },
+    function(server_name)
+      if (server_name ~= "rust_analyzer") then
+        require('lspconfig')[server_name].setup({})
+      end
+    end,
+    -- rust_analyzer = lsp.noop,
+  }
+  -- handlers = {
+  --   lsp.default_setup,
+  -- },
 })
 
 local cmp = require('cmp')
@@ -41,6 +49,7 @@ cmp.setup({
     -- completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered({
       border = 'single',
+      zindex = 1,
     }),
   },
   mapping = cmp.mapping.preset.insert({
@@ -49,7 +58,7 @@ cmp.setup({
     ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    -- ['<C-Space>'] = cmp.mapping.complete(),
+    -- ['<C-y>'] = cmp.mapping.complete(),
     ['<C-n>'] = cmp_action.luasnip_jump_forward(),
     ['<C-p>'] = cmp_action.luasnip_jump_backward(),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -79,7 +88,7 @@ lsp.set_sign_icons({
   }
 })
 
-lsp.on_attach(function(client, bufnr)
+local on_attach_fn = function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
@@ -101,7 +110,9 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, opts)
   -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
+end
+
+lsp.on_attach(on_attach_fn)
 
 lsp.format_on_save({
   format_opts = {
@@ -110,7 +121,7 @@ lsp.format_on_save({
   },
   servers = {
     -- ['tsserver'] = {'javascript', 'typescript'},
-    ['rust_analyzer'] = { 'rust' },
+    -- ['rust_analyzer'] = { 'rust' },
     ['lua_ls'] = { 'lua' },
   }
 })
@@ -132,4 +143,64 @@ require('lspconfig').lua_ls.setup {
     },
   },
 }
+
+vim.g.rustaceanvim = {
+  -- Plugin configuration
+  tools = {
+    hover_actions = {
+      auto_focus = true,
+    }
+  },
+  -- LSP configuration
+  server = {
+    capabilities = lsp.get_capabilities(),
+    on_attach = function(client, bufnr)
+      on_attach_fn(client, bufnr)
+
+      local opts = { buffer = bufnr, remap = true }
+      vim.keymap.set("n", "<leader>va", function() vim.cmd.RustLsp('codeAction') end, opts)
+      vim.keymap.set("n", "<leader>ri", function() vim.cmd.RustLsp('renderDiagnostic') end, opts)
+      vim.keymap.set("n", "<leader>rm", function() vim.cmd.RustLsp('expandMacro') end, opts)
+      vim.keymap.set("n", "<leader>re", function() vim.cmd.RustLsp('explainError') end, opts)
+      vim.keymap.set("n", "<leader>ro", function() vim.cmd.RustLsp('openDocs') end, opts)
+      vim.keymap.set("n", "<leader>rt", function() vim.cmd.RustLsp('testables') end, opts)
+      vim.keymap.set("n", "<leader>rl", function() vim.cmd("!leptosfmt %") end, opts)
+    end,
+    default_settings = {
+      ['rust-analyzer'] = {
+        assist = {
+          importEnforceGranularity = true,
+          importPrefix = "crate"
+        },
+        checkOnSave = {
+          allFeatures = true,
+          command = "clippy",
+          extraArgs = { "--no-deps" }
+        },
+        cargo = {
+          allFeatures = true
+        },
+        inlayHints = {
+          lifetimeElisionHints = {
+            enable = true,
+            useParameterNames = true
+          },
+          typeHints = true,
+          chainingHints = true,
+          parameterHints = true,
+          maxLength = 120,
+        },
+      },
+    },
+  },
+  dap = {},
+}
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.rs" },
+  callback = function(_ev)
+    vim.lsp.buf.format()
+  end
+})
+
 lsp.setup()
