@@ -12,9 +12,9 @@ trouble.setup({
     hint = "hint",
     information = "info"
   },
-  use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-
+  use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 })
+
 vim.keymap.set("n", "<leader>el", function() trouble.toggle() end)
 vim.keymap.set("n", "gR", function() trouble.toggle("lsp_references") end)
 

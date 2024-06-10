@@ -59,7 +59,10 @@ return require('packer').startup(function(use)
   use { "nvim-lua/plenary.nvim" }
   use { "nvim-pack/nvim-spectre" }
 
-  use { "folke/trouble.nvim" }
+  use {
+    "folke/trouble.nvim",
+    tag = "v2.10.0"
+  }
 
   use { "lewis6991/gitsigns.nvim" }
 
