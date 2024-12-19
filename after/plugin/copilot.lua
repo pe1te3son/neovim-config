@@ -53,6 +53,8 @@ co_chat.setup {
     },
   },
 }
+vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)', { remap = true })
+vim.keymap.set('i', '<C-h>', '<Plug>(copilot-accept-line)')
 
 vim.g.copilot_filetypes = { rust = false }
 
@@ -74,7 +76,6 @@ vim.keymap.set("v", "<leader>cp", function()
     end
   end,
   { noremap = true })
-
 
 vim.keymap.set("v", "<leader>ce", function()
     co_chat.ask("Explain how it works", { selection = require("CopilotChat.select").visual })
