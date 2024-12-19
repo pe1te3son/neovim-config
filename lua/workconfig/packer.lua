@@ -79,7 +79,7 @@ return require('packer').startup(function(use)
   use { 'norcalli/nvim-colorizer.lua' }
   use {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     requires = {
       { "github/copilot.vim" },    -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper

@@ -5,7 +5,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {
-    'tsserver',
+    'ts_ls',
     'rust_analyzer',
   },
   handlers = {
