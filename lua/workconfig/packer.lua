@@ -59,7 +59,10 @@ return require('packer').startup(function(use)
   use { "nvim-lua/plenary.nvim" }
   use { "nvim-pack/nvim-spectre" }
 
-  use { "folke/trouble.nvim" }
+  use {
+    "folke/trouble.nvim",
+    tag = "v2.10.0"
+  }
 
   use { "lewis6991/gitsigns.nvim" }
 
@@ -76,7 +79,7 @@ return require('packer').startup(function(use)
   use { 'norcalli/nvim-colorizer.lua' }
   use {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     requires = {
       { "github/copilot.vim" },    -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
