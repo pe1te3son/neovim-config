@@ -53,8 +53,8 @@ co_chat.setup {
     },
   },
 }
-vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)', { remap = true })
-vim.keymap.set('i', '<C-h>', '<Plug>(copilot-accept-line)')
+vim.keymap.set('i', '<C-u>', '<Plug>(copilot-accept-word)', { remap = true })
+vim.keymap.set('i', '<C-o>', '<Plug>(copilot-accept-line)')
 
 vim.g.copilot_filetypes = { rust = false }
 
