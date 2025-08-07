@@ -80,6 +80,9 @@ return require('packer').startup(function(use)
   use {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
     requires = {
       { "github/copilot.vim" },    -- or github/copilot.vim
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
